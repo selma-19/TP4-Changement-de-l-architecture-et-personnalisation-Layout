@@ -1,7 +1,8 @@
-﻿namespace tp4.Repositories.RepositoryContracts
+﻿using tp4.Models;
+
+namespace tp4.Repositories.RepositoryContracts
 {
-    public interface IMovieRepository
-    {
+  
         public interface IMovieRepository
         {
             List<Movie> GetAllMovies();
@@ -15,4 +16,4 @@
         }
 
     }
-}
+

@@ -1,5 +1,4 @@
-﻿using Humanizer.Localisation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 
 namespace tp4.Models
@@ -22,14 +21,7 @@ namespace tp4.Models
             model.Entity<Movie>().HasMany(m => m.Customers).WithMany(c => c.Movies);
             model.Entity<Genres>().HasMany(g => g.movies).WithOne(m => m.Genre).HasForeignKey(m => m.GenreId).IsRequired(false);
             model.Entity<MembershipType>().HasMany(m => m.Customers).WithOne(c => c.MembershipType).HasForeignKey(c => c.MembershipTypeId).IsRequired(false);
-            base.OnModelCreating(model);
-            string GenreJSon = System.IO.File.ReadAllText("GenreSeedData.Json");
-            List<Genres>? genres = System.Text.Json.
-            JsonSerializer.Deserialize<List<Genres>>(GenreJSon);
-            //Seed to categorie
-            foreach (Genres c in genres)
-                model.Entity<Genres>()
-                .HasData(c);
+            
         }
       
     }
